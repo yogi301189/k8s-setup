@@ -25,6 +25,9 @@ curl -Lo kops https://github.com/kubernetes/kops/releases/latest/download/kops-l
 chmod +x kops
 sudo mv kops /usr/local/bin/
 kops version
+echo 'export NAME=yogi.k8s.local' >> ~/.bashrc
+echo 'export KOPS_STATE_STORE=s3://smart-file-analyzer-bucket' >> ~/.bashrc
+source .bashrc
 
 echo "✅ Creating Kubernetes cluster using Kops..."
 kops create cluster --zones ${AWS_REGION}a ${NAME}
